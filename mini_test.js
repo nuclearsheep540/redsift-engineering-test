@@ -46,8 +46,10 @@ function count(array) {
 /**
 TASK TWO
 a) What is the performance, in terms of, Big O notation, of the below code?
+    O(n^2) = O Squared
 b) Write a solution that has better performance
 c) What is the performance of your new solution?
+    O(n)
 */
 
 const domains = { // Example to show data shape only.
@@ -82,9 +84,27 @@ const getBlockPolicyState = (domains) => {
     // to improve this, we can achieve a linear O(n) if we refactor the for-loop
 };
 
+const domains = {
+    "one.com": {policy: "block"},
+    "two.com": { policy: "none" },
+    "three.com": { policy: "none" },
+    "four.com": { policy: "block" },
+}
+
+const improvedGetBlockPolicyState = (domains) => {
+    // removing the object push with entries, and utlising a map on the entries is O(n) efficient
+    const policyArr = Object.entries(domains).map((domain) => {
+        return domain[1].policy
+    })
+    oneDomain = policyArr.some((item) => item === "block");
+    allDomains = policyArr.every((item) => item === "block");
+    return { oneDomain, allDomains };
+  };
+
 
 /**
-* TASK THREE
+TASK THREE
+Find the first recurring character of the below lists
 */
 const task8 = [
     [2,5,1,2,3,5,1,2,4],
